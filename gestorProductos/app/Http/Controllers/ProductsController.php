@@ -54,8 +54,9 @@ class ProductsController extends Controller
 
     // Método para eliminar el producto
     public function delete(Request $request){
-        $user = Product::find($request->id);
-        $user->delete();
+        // Se busca el producto para eliminarlo
+        $product = Product::find($request->id);
+        $product->delete();
 
         return redirect()->route('products')->with('success','El producto fue eliminado con exito');
 
