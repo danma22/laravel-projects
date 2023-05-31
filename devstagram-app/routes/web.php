@@ -31,7 +31,7 @@ Route::get('/crear', [RegisterController::class, 'index'])->name('register');
 Route::post('/crear', [RegisterController::class, 'store']);
 
 // Ruta para mostrar el dashboard de usuario autenticado
-Route::get('/muro', [PostController::class, 'index'])->name('post.index');
+Route::get('/{user:username}', [PostController::class, 'index'])->name('post.index');
 
 // Ruta del login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
