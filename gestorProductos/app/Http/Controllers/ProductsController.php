@@ -13,11 +13,13 @@ class ProductsController extends Controller
         $this->middleware('auth');
     }
 
+    // Método para mostrar la vista de productos
     public function index(){
         $products = Product::get();
         return view("pages.products", ['products'=>$products]);
     }
 
+    // Método para mostrar el formulario de productos
     public function newProduct(){
         return view("pages.newProduct");
     }
@@ -50,8 +52,8 @@ class ProductsController extends Controller
 
     }
 
+    // Método para eliminar el producto
     public function delete(Request $request){
-        //Funcion para eliminar el producto
         $user = Product::find($request->id);
         $user->delete();
 
