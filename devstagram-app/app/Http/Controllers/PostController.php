@@ -21,4 +21,9 @@ class PostController extends Controller
             'user'=>$user
         ]);
     }
+
+    // CREANDO MÉTODOCREATE PARA FORMULARIO DE PUBLICACIONES
+    public function create(){
+        return view('posts.create');
+    }
 }

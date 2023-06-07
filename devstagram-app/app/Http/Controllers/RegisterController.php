@@ -40,7 +40,7 @@ class RegisterController extends Controller
             //Insertar username en minusculas y sin espacios
             'username'=>$request->username,
             'email'=>$request->email,
-            'password'=>Hash::make($request->passwords)
+            'password'=>Hash::make($request->password)
         ]);
 
         // Autenticar un usuario con el método

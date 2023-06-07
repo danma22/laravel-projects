@@ -26,12 +26,13 @@ Route::get('/', function () {
 
 // Ruta para vista registro de cuenta
 Route::get('/crear', [RegisterController::class, 'index'])->name('register');
-
 // Ruta para enviar datos al servidor
 Route::post('/crear', [RegisterController::class, 'store']);
 
 // Ruta para mostrar el dashboard de usuario autenticado
 Route::get('/{user:username}', [PostController::class, 'index'])->name('post.index');
+// Ruta para mostrar el formulario para crear post
+Route::get('/posts/create', [PostController::class, 'create'])->name('post.create');
 
 // Ruta del login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
