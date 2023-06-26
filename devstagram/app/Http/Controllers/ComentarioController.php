@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ComentarioController extends Controller
 {
-    // método para guardar
+    // Método para eliminar
     public function store(Request $request, User $user, Post $post){
         // validar
         $this->validate($request, [
@@ -25,5 +25,14 @@ class ComentarioController extends Controller
 
         // imprimir un mensaje
         return back()->with('mensaje', 'Comentario Realizado Correctamente');
+    }
+
+    // Método para eliminar el comentario del post
+    public function delete($id)
+    {
+        // Se encuentra el comentario con el id 
+        Comentario::find($id)->delete();
+        // Se vuelve a la vista del post
+        return back()->with('mensaje', 'Comentario eliminado correctamente');
     }
 }
