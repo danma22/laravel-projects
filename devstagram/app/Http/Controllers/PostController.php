@@ -27,12 +27,15 @@ class PostController extends Controller
         ]);
     }
 
+    // Método para mostrar la vista de creacion de posts
     public function create()
     {
         return view('posts.create');
     }
 
+    // Método para almacenar un post
     public function store(Request $request){
+        // Validar campos
         $this->validate($request, [
             'titulo' => 'required|max:255',
             'descripcion' => 'required',
@@ -55,6 +58,7 @@ class PostController extends Controller
         // $post->user_id = auth()->user()->id;
         // $post->save();
 
+        // Tercera forma de registrar
         $request->user()->posts()->create([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
@@ -62,9 +66,11 @@ class PostController extends Controller
             'user_id' => auth()->user()->id
         ]);
 
+        // Se manda a la pantalla principal del usuario
         return redirect()->route('posts.index', auth()->user()->username);
     }
 
+    // Método para que se muestre la vista de posts
     public function show(User $user, Post $post){
         return view('posts.show', [
             'post' => $post,
@@ -72,6 +78,7 @@ class PostController extends Controller
         ]);
     }
 
+    // Método para eliminar un post
     public function destroy(Post $post) {
 
         // Se utiliza las policies, para autorizar la eliminación
