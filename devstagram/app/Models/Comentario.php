@@ -15,6 +15,7 @@ class Comentario extends Model
         'comentario'
     ];
 
+    // Relación con usuario: un comentario pertenece a un usuario
     public function user(){
         return $this->belongsTo(User::class);
     }
