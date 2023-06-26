@@ -89,6 +89,17 @@
                                 </a>
                                 <p>{{$comentario->comentario}}</p>
                                 <p class="text-sm text-gray-500">{{$comentario->created_at->diffForHumans()}}</p>
+                                @auth
+                                    @if ($comentario->user->username === auth()->user()->username)
+                                        <form action="{{ route('comentario.delete', $comentario->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-red-500 cursor-pointer">
+                                                Eliminar comentario
+                                            </button>
+                                        </form>
+                                    @endif
+                                @endauth
                             </div>
                         @endforeach
                     @else
