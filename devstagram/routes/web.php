@@ -50,4 +50,5 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.
 
 // Ruta para guardar un comentario en un post
 Route::post('/{user:username}/posts/{post}', [ComentarioController::class, 'store'])->name('comentarios.store');
-
+// Ruta para eliminar un comentario de un post
+Route::delete('/comentario/{id}', [ComentarioController::class, 'delete'])->name('comentario.delete');
