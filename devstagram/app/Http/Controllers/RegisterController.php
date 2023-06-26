@@ -9,12 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
-    //
+    // Método para ver la vista de registro
     public function index()
     {
         return view('auth.register');
     }
 
+    // Método para registrar un usuario
     public function store(Request $request)
     {
         // Modificar el Request para validar que sea unico (no recomendado modificarlo directamente)
